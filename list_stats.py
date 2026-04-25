@@ -2,6 +2,8 @@
 
 def find_min(numbers):
     """Dada una lista de numeros, retorna el menor valor."""
+    if not numbers: 
+        return None
     minimum = numbers[0]
     for num in numbers:
         if num < minimum:
@@ -11,6 +13,8 @@ def find_min(numbers):
 
 def find_max(numbers):
     """Dada una lista de numeros, retorna el mayor valor."""
+    if not numbers: 
+        return None
     maximum = numbers[0]
     for num in numbers:
         if num > maximum:
@@ -26,7 +30,8 @@ def range_of(numbers):
 
     Ejemplo: range_of([3, 1, 7, 2]) -> 6  (7 - 1)
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    #return "ANSWER HERE"  # Remove this line and implement
+    return find_max(numbers) - find_min(numbers)
 
 
 def average(numbers):
@@ -37,7 +42,15 @@ def average(numbers):
 
     Ejemplo: average([10, 20, 30]) -> 20.0
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    #return "ANSWER HERE"  # Remove this line and implement
+    if not numbers:
+        return 0.0
+    suma = 0
+    for n in numbers:
+        suma += n
+    
+    promedio = suma / len(numbers)
+    return round(promedio,1)
 
 
 def describe(numbers):
@@ -50,4 +63,13 @@ def describe(numbers):
 
     Ejemplo: describe([3, 1, 7, 2]) -> "Min:1 Max:7 Range:6 Avg:3.2"
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    #return "ANSWER HERE"  # Remove this line and implement
+    if not numbers:
+        return "Empty list"
+
+    min_val = find_min(numbers)
+    max_val = find_max(numbers)
+    ran_val = range_of(numbers)
+    avg_val = average(numbers)
+
+    return f"Min:{min_val} Max:{max_val} Range:{ran_val} Avg:{avg_val}"
